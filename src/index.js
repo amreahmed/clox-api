@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+
 const app = express();
 const PORT = 3001;
 
@@ -14,12 +15,15 @@ if (!process.env.MONGODB_URI) {
     throw new Error("MONGODB_URI is missing from .env file");
 }
     
- mongoose.connect(process.env.MONGODB_URI).then(() => {
-   console.log("Connected to MongoDB");
-
+mongoose.connect(process.env.MONGODB_URI).then(() => {
+    console.log("Connected to Database.");
    app.listen(PORT, () => {
      console.log("listening on port", PORT);
    });
  });
 
- 
+
+
+
+
+
