@@ -3,7 +3,10 @@ const express = require("express");
 const router = express.Router();
 
 // GET: api.cloxbot.me/tickets
-
+router.get("/guilds", (req, res) => {
+    console.log(req.user.username);
+    res.send("recived")
+});
 
 router.get("/guild/:id", (req, res) => { 
     const { id } = req.params;
