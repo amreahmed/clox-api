@@ -3,13 +3,14 @@ const mongoose = require('mongoose');
 const baseRouter = require('./routes/base-router');
 const baseMiddleware = require('./middlewares/base-middleware')
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 require('dotenv').config();
 
 
 const app = express();
 const PORT = 3001;
 
-
+app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 app.use(cookieParser())
 app.use("/", baseMiddleware);
 app.use('/', baseRouter);
@@ -25,8 +26,10 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
      console.log("listening on port", PORT);
      
    });
+  
 });
  
+
 
 
 
